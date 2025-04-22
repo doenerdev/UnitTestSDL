@@ -1,4 +1,4 @@
-namespace Tests.ResistanceToRefactoring.PrivateMethods;
+namespace Tests.ResistanceToRefactoring.DomainLeakage;
 
 public interface IConditionListRepository
 {

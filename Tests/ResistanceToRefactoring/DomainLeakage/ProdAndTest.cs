@@ -50,7 +50,6 @@ public class CalculatorTests
             return new ConditionList(factor);
         }
     }
-
 }
 
 
