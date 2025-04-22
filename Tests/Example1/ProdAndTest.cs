@@ -2,6 +2,7 @@
 
 namespace Tests.Example1;
 
+//Productive Code
 public class Calculator(IConditionListRepository repository) 
 {
     public decimal CalculateLeaseRate(
@@ -16,6 +17,8 @@ public class Calculator(IConditionListRepository repository)
     }
 }
 
+
+//Test Code
 public class CalculatorTests
 {
     [Theory]
