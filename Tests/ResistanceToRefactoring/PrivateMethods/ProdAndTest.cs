@@ -35,7 +35,7 @@ public class CalculatorTests
         MethodInfo methodInfo = typeof(Calculator).GetMethod("DetermineFactor", BindingFlags.NonPublic | BindingFlags.Instance);
         
         //Act
-        var result = methodInfo!.Invoke(sut, [Guid.NewGuid()]);
+        var result = methodInfo!.Invoke(sut, [Guid.NewGuid()]); //the private method is invoked via refelection -> tight coupling to implementation
 
         //Assert
         Assert.Equal(1.5m, (decimal) result!);
