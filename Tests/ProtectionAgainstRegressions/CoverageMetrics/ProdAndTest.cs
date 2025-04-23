@@ -10,12 +10,12 @@ public class Classifier()
     {
         if (genus is "Dog")
             return true;
-       
-        throw new ArgumentException("No appropriate genus provided");
+
+        return false;
     }
     
     //--> 100% coverage
-    public bool IsAnimalV2(string genus) => genus is "Dog" ? true : throw new ArgumentException("No appropriate genus provided");
+    public bool IsAnimalV2(string genus) => genus is "Dog";
 }
 
 
