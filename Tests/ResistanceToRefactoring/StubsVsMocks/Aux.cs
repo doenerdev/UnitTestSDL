@@ -1,4 +1,4 @@
-namespace Tests.Example1;
+namespace Tests.ResistanceToRefactoring.StubsVsMocks;
 
 public interface IConditionListRepository
 {

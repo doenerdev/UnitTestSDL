@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Moq;
+using Xunit;
 
-namespace Tests.Example1;
+namespace Tests.ResistanceToRefactoring.StubsVsMocks;
 
 //Productive Code
 public class Calculator(IConditionListRepository repository) 
@@ -11,7 +12,6 @@ public class Calculator(IConditionListRepository repository)
     {
         var conditionList = repository
             .GetConditionListById(conditionListId);
-
 
         return baseInstallment * conditionList.Factor;
     }
@@ -49,7 +49,30 @@ public class CalculatorTests
             return new ConditionList(factor);
         }
     }
+    
+    [Theory]
+    [InlineData(100, 1.5, 150, "e605f128-bac8-4ed6-a582-a658616d8a6f")]
+    public void CalculateLeaseRate_WithMock_RateIsCalculatedWithFactor(
+        decimal installment, 
+        decimal factor, 
+        decimal expected, 
+        string conditionListIdAsString)
+    {
+        //Arrange
+        var conditionListId = Guid.Parse(conditionListIdAsString);
+        var mockRepo = new Mock<IConditionListRepository>(MockBehavior.Strict);
+        mockRepo.Setup(x => x.GetConditionListById(conditionListId))
+            .Returns(new ConditionList(factor));
+        var sut = new Calculator(mockRepo.Object);
 
+        //Act
+        var actual = sut.CalculateLeaseRate(installment, conditionListId);
+
+        //Act & Assert
+        Assert.Equal(expected, actual);
+        mockRepo.Verify(x => x.GetConditionListById(conditionListId));
+	
+    }
 }
 
 
