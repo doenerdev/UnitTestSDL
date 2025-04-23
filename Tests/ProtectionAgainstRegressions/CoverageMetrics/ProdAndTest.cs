@@ -5,25 +5,17 @@ namespace Tests.ProtectionAgainstRegressions.CoverageMetrics;
 //Productive Code
 public class Classifier() 
 {
-    //--> 57% coverage
+    //--> 80% coverage
     public bool IsAnimal(string genus)
     {
         if (genus is "Dog")
-            return true;
-        if (genus is "Cat")
             return true;
        
         throw new ArgumentException("No appropriate genus provided");
     }
     
-    //--> 80% coverage
-    public bool IsAnimalV2(string genus)
-    {
-        if (genus is "Dog" or "Cat")
-            return true;
-
-        throw new ArgumentException("No appropriate genus provided");
-    }
+    //--> 100% coverage
+    public bool IsAnimalV2(string genus) => genus is "Dog" ? true : throw new ArgumentException("No appropriate genus provided");
 }
 
 
