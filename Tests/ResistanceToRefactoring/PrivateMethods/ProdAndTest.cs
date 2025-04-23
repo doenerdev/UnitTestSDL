@@ -30,9 +30,9 @@ public class CalculatorTests
     public void DetermineFactor_WithConditionListId_ReturnsCorrectFactor()
     {
         //Arrange
-        var expected = 1.5m;
+        const decimal expected = 1.5m;
         var sut = new Calculator(new StubRepository(expected));
-        MethodInfo methodInfo = typeof(Calculator).GetMethod("DetermineFactor", BindingFlags.NonPublic | BindingFlags.Instance);
+        var methodInfo = typeof(Calculator).GetMethod("DetermineFactor", BindingFlags.NonPublic | BindingFlags.Instance);
         
         //Act
         var result = methodInfo!.Invoke(sut, [Guid.NewGuid()]); //the private method is invoked via refelection -> tight coupling to implementation

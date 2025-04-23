@@ -1,19 +1,22 @@
 ﻿using Xunit;
 
-namespace Tests.ResistanceToRefactoring.DomainLeakage;
+namespace Tests.Maintainability.ComparingObjects;
 
 //Productive Code
 public class Calculator(IConditionListRepository repository) 
 {
-    public decimal CalculateLeaseRate(
+    public LeaseRate CalculateLeaseRate(
         decimal baseInstallment, 
         Guid conditionListId)
     {
-        var conditionList = repository
-            .GetConditionListById(conditionListId);
+        var conditionList = repository.GetConditionListById(conditionListId);
 
-
-        return baseInstallment * conditionList.Factor;
+        var rate = baseInstallment * conditionList.Factor;
+        return new LeaseRate
+        {
+            AppliedFactor = conditionList.Factor,
+            Rate = rate
+        };
     }
 }
 
@@ -25,11 +28,15 @@ public class CalculatorTests
     public void CalculateLeaseRate_RateIsCalculatedWithFactor()
     {
         //Arrange
-        const decimal factor = 1.5m;
         const decimal installment = 100m;
-        
-        const decimal expected = factor * installment; //implementation or algorithm details leaked to the test
+        const decimal factor = 1.5m;
+        const decimal expectedRateValue = 150m;
 
+        var expected = new LeaseRate{
+            AppliedFactor = factor,
+            Rate = expectedRateValue
+        };;
+        
         var stubRepo = new StubRepository(factor);
         var sut = new Calculator(stubRepo);
 
@@ -37,7 +44,7 @@ public class CalculatorTests
         var actual = sut.CalculateLeaseRate(installment, Guid.NewGuid());
 
         //Act & Assert
-        Assert.Equal(expected, actual);
+        Assert.Equivalent(expected, actual);
 	
     }
 
