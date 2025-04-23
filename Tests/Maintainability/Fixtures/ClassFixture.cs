@@ -17,17 +17,17 @@ public class DatabaseFixture : IDisposable
     }
 }
 
-public class CalculatorTests : IClassFixture<DatabaseFixture>
+public class DatabaseFixtureTests : IClassFixture<DatabaseFixture>
 {
     private readonly DatabaseFixture _databaseFixture;
 
-    public CalculatorTests(DatabaseFixture databaseFixture)
+    public DatabaseFixtureTests(DatabaseFixture databaseFixture)
     {
         _databaseFixture = databaseFixture;
     }
 
     [Fact]
-    public void CalculateLeaseRate_RateIsCalculatedWithFactor()
+    public void SomeTest()
     {
         //test something here
         Assert.True(true);
