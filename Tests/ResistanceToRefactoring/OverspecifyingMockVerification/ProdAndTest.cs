@@ -43,7 +43,6 @@ public class CalculatorTests
         //Act & Assert
         Assert.Equal(expected, actual);
         mockRepo.Verify(x => x.GetConditionListById(), Times.Once);
-	
     }
 }
 

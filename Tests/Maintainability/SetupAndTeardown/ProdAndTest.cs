@@ -40,7 +40,6 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-	
     }
     
     //with factory method
@@ -57,7 +56,6 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-	
     }
 
     private static StubRepository CreateStubRepository(decimal factor)

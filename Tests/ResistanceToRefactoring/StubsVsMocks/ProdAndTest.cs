@@ -37,7 +37,6 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-	
     }
 
     private class StubRepository(decimal factor) 
@@ -70,8 +69,8 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-        mockRepo.Verify(x => x.GetConditionListById(conditionListId));
-	
+        mockRepo.Verify(x => x.GetConditionListById(conditionListId), Times.Once);
+        mockRepo.VerifyNoOtherCalls();
     }
 }
 

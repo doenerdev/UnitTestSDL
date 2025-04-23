@@ -37,7 +37,6 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-	
     }
     
     [Fact]
@@ -55,7 +54,6 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-	
     }
     
     //One test case as a 'Theory'
@@ -76,7 +74,6 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-	
     }
 
     private class StubRepository(decimal factor) 
@@ -110,7 +107,6 @@ public class CalculatorTests
         //Act & Assert
         Assert.Equal(expected, actual);
         mockRepo.Verify(x => x.GetConditionListById(conditionListId));
-	
     }
 }
 

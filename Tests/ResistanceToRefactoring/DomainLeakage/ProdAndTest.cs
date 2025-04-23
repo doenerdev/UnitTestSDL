@@ -38,7 +38,6 @@ public class CalculatorTests
 
         //Act & Assert
         Assert.Equal(expected, actual);
-	
     }
 
     private class StubRepository(decimal factor) 
