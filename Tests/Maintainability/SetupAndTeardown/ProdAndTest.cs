@@ -38,7 +38,7 @@ public class CalculatorTests
         //Act
         var actual = sut.CalculateLeaseRate(installment, Guid.NewGuid());
 
-        //Act & Assert
+        //Assert
         Assert.Equal(expected, actual);
     }
     
@@ -54,7 +54,7 @@ public class CalculatorTests
         //Act
         var actual = sut.CalculateLeaseRate(installment, Guid.NewGuid());
 
-        //Act & Assert
+        //Assert
         Assert.Equal(expected, actual);
     }
 

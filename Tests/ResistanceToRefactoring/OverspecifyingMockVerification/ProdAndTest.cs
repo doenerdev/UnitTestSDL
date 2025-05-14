@@ -40,7 +40,7 @@ public class CalculatorTests
         //Act
         var actual = sut.CalculateLeaseRate(installment);
 
-        //Act & Assert
+        //Assert
         Assert.Equal(expected, actual);
         mockRepo.Verify(x => x.GetConditionListById(), Times.Once);
     }

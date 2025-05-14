@@ -31,7 +31,7 @@ public class ClassifierTests
         //Act
         var actual = sut.IsAnimal("Dog");
 
-        //Act & Assert
+        //Assert
         Assert.True(actual);
     }
     
@@ -44,7 +44,7 @@ public class ClassifierTests
         //Act
         var actual = sut.IsAnimalV2("Dog");
 
-        //Act & Assert
+        //Assert
         Assert.True(actual);
     }
 }

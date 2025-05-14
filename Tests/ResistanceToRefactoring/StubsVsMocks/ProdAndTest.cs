@@ -35,7 +35,7 @@ public class CalculatorTests
         //Act
         var actual = sut.CalculateLeaseRate(installment, Guid.NewGuid());
 
-        //Act & Assert
+        //Assert
         Assert.Equal(expected, actual);
     }
 
@@ -67,7 +67,7 @@ public class CalculatorTests
         //Act
         var actual = sut.CalculateLeaseRate(installment, conditionListId);
 
-        //Act & Assert
+        //Assert
         Assert.Equal(expected, actual);
         mockRepo.Verify(x => x.GetConditionListById(conditionListId), Times.Once);
         mockRepo.VerifyNoOtherCalls();
