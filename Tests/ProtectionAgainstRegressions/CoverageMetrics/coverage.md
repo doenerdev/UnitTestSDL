@@ -52,7 +52,7 @@ Example 2:
         result = b
         if a > b  
             result = a 
-        print(b)
+        print(result)
     
     //test
     test -> f(10, 5)
